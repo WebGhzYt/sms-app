@@ -41,11 +41,19 @@ class ClientsController < ApplicationController
  
         @user.account.messages.create({
           :from => '+12018172417',  
-          :to => @client.phone,
+          :to => "+91" + @client.phone,
           :body => @client.email,
-          :media_url => "http://twilio.com/heart.jpg"
+          # :media_url => "http://twilio.com/heart.jpg"
         })
 
+        @user.account.calls.create({
+          :from => '+12018172417',  
+          :to => "+91" + @client.phone,
+          url: 'http://example.com/call-handler'
+          # :media_url => "http://twilio.com/heart.jpg"
+        })
+
+        
 
 
         #  # Instantiate a Twilio client
